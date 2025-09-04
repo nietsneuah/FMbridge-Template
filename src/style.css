@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FileMaker WebViewer Base Styles */
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  
+  /* FileMaker-friendly color palette */
+  --fm-primary: #007AFF;
+  --fm-secondary: #5856D6;
+  --fm-success: #34C759;
+  --fm-warning: #FF9500;
+  --fm-error: #FF3B30;
+  --fm-background: #F2F2F7;
+  --fm-surface: #FFFFFF;
+  --fm-text: #000000;
+  --fm-text-secondary: #6D6D70;
+  --fm-border: #C6C6C8;
+  --fm-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Reset and base styles for FileMaker webviewer */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--fm-background);
+  color: var(--fm-text);
+}
+
+/* Main app container */
+#app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* FileMaker-specific component styles */
+.fm-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+}
+
+.fm-button {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+}
+
+.fm-button-primary {
+  @apply bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.fm-button-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+}
+
+.fm-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.fm-select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+/* Upload zone styles */
+.upload-zone {
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center transition-colors duration-200;
+}
+
+.upload-zone.drag-over {
+  @apply border-blue-500 bg-blue-50;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse;
+}
+
+.spinner {
+  @apply animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full;
+}
+
+/* Notification styles */
+.notification {
+  @apply fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 max-w-sm;
+}
+
+.notification-success {
+  @apply bg-green-100 border border-green-200 text-green-800;
+}
+
+.notification-error {
+  @apply bg-red-100 border border-red-200 text-red-800;
+}
+
+.notification-warning {
+  @apply bg-yellow-100 border border-yellow-200 text-yellow-800;
+}
+
+/* FileMaker webviewer specific adjustments */
+@media screen and (max-width: 768px) {
+  #app {
+    padding: 0.5rem;
+  }
+  
+  .fm-card {
+    @apply p-4;
+  }
+}
+
+/* Print styles for FileMaker */
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --fm-border: #000000;
+    --fm-text-secondary: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

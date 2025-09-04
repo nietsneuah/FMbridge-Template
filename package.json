@@ -1,0 +1,31 @@
+{
+  "name": "fmbridge-template.json",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && node scripts/clean-dist.js",
+    "build:filemaker": "tsc && vite build --mode filemaker && node scripts/clean-dist.js",
+    "preview": "vite preview",
+    "upload": "npm run build:filemaker && node scripts/upload.js",
+    "clean-dist": "node scripts/clean-dist.js"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.6",
+    "postcss-import": "^16.1.0",
+    "terser": "^5.39.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-singlefile": "^2.2.0"
+  },
+  "dependencies": {
+    "apexcharts": "^4.7.0",
+    "autoprefixer": "^10.4.21",
+    "fm-gofer": "^1.10.0",
+    "open": "^10.1.2",
+    "postcss": "^8.5.3",
+    "tabulator-tables": "^6.3.1",
+    "tailwindcss": "^4.1.6"
+  }
+}
